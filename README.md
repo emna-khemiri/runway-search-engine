@@ -30,6 +30,7 @@ The search functionality combines **CLIP** (Contrastive Language-Image Pretraini
    - The matching image paths (from background-removed images) are converted to URLs pointing to the original runway images (in `fw25`).
    - The FastAPI server returns a JSON response with a list of image URLs.
    - The frontend fetches and displays the original runway images.
+![Alt text](text-to-image-search-workflow.png)
 
 ### Why CLIP and FAISS?
 - **CLIP**: Encodes text and images into a shared embedding space, enabling semantic matching between natural language queries and visual content.
@@ -43,5 +44,3 @@ The search functionality combines **CLIP** (Contrastive Language-Image Pretraini
   - FAISS finds the images with the closest feature vectors.
   - The system returns URLs to the original runway images.
 - **Result**: A list of runway images featuring fur coats.
-
-This workflow delivers a fast, accurate, and user-friendly search experience for fashion runway images.
