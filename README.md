@@ -10,7 +10,7 @@ This project implements a **fashion runway search engine** that allows users to 
 The search functionality combines **CLIP** (Contrastive Language-Image Pretraining) and **FAISS** (Facebook AI Similarity Search) to deliver fast and accurate results. Here's how it works:
 
 1. **Image Feature Extraction**:
-   - Images with removed backgrounds (stored in `fw25-jpg`) are processed using the CLIP model (`CLIP-ViT-L-14-laion2B-s32B-b82K`).
+   - Images with removed backgrounds are processed using the CLIP model (`CLIP-ViT-L-14-laion2B-s32B-b82K`).
    - Each image is converted to a 768-dimensional feature embedding, normalized for consistent similarity comparisons.
    - Features are extracted once and cached (`features.npy`, `paths.pkl`) to avoid redundant computation.
 
@@ -23,12 +23,12 @@ The search functionality combines **CLIP** (Contrastive Language-Image Pretraini
    - The query is encoded into a 768-dimensional CLIP embedding using the CLIP model's text encoder and normalized.
 
 4. **Similarity Search**:
-   - The query embedding is searched against the FAISS index to find the top `k` (default: 5) closest image embeddings.
+   - The query embedding is searched against the FAISS index to find the top `k` closest image embeddings.
    - FAISS returns the indices of the matching images, which are mapped to their corresponding image paths.
 
 5. **Result Delivery**:
    - The matching image paths (from background-removed images) are converted to URLs pointing to the original runway images (in `fw25`).
-   - The FastAPI server returns a JSON response with a list of image URLs (e.g., `http://127.0.0.1:8000/fw25/brand/image.jpg`).
+   - The FastAPI server returns a JSON response with a list of image URLs.
    - The frontend fetches and displays the original runway images.
 
 ### Why CLIP and FAISS?
